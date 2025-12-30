@@ -2,11 +2,15 @@ version: 1
 frontend:
   phases:
     build:
-      commands: 
-        - echo 'window.__CONFIG__ = { API_BASE: "'$API_BASE'" };' > ./assets/js/config.js
+      commands:
+        - mkdir -p assets/js
+        - |
+          cat > assets/js/config.js << 'EOF'
+          window.__CONFIG__ = { API_BASE: "$API_BASE" };
+          EOF
   artifacts:
     baseDirectory: .
     files:
-      - '**/*'
+      - "**/*"
   cache:
     paths: []
