@@ -2,7 +2,12 @@
   const list = document.querySelector(".project-list");
   if (!list) return;
 
-  const API_BASE = window.__CONFIG__.API_BASE; // e.g. https://abc.execute-api.us-west-2.amazonaws.com
+ const RAW = window.__CONFIG__?.API_BASE || "";
+if (!RAW) {
+  console.log("API_BASE not set; keeping static projects.");
+  return;
+}
+const API_BASE = RAW.replace(/\/+$/, "").replace(/\/projects$/, "");
 
   try {
     const res = await fetch(`${API_BASE}/projects`);
