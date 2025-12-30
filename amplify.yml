@@ -4,10 +4,7 @@ frontend:
     build:
       commands:
         - mkdir -p assets/js
-        - |
-          cat > assets/js/config.js << 'EOF'
-          window.__CONFIG__ = { API_BASE: "$API_BASE" };
-          EOF
+        - echo "window.__CONFIG__ = { API_BASE: '${API_BASE}' };" > assets/js/config.js
   artifacts:
     baseDirectory: .
     files:
