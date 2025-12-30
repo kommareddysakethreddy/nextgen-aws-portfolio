@@ -2,7 +2,7 @@
   const list = document.querySelector(".project-list");
   if (!list) return;
 
-  const API_BASE = "PASTE_YOUR_INVOKE_URL_HERE"; // e.g. https://abc.execute-api.us-west-2.amazonaws.com
+  const API_BASE = window.__CONFIG__.API_BASE; // e.g. https://abc.execute-api.us-west-2.amazonaws.com
 
   try {
     const res = await fetch(`${API_BASE}/projects`);
